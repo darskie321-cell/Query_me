@@ -11,11 +11,7 @@ public class User {
         try {
             Connection con = conn.getConnection();
             // 1. Complete this sql query, don't mind the complex code below.
-<<<<<<< HEAD
             String query = "SELECT * FROM users WHERE username = ?"; // Complete this
-=======
-            String query = " username = ?"; // Complete this
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, username);
             ResultSet res = stmt.executeQuery();
@@ -41,11 +37,7 @@ public class User {
         try {
             Connection con = conn.getConnection();
             // 2. Add a query here. easy query so far...
-<<<<<<< HEAD
             String query = "SELECT users.id,users.username,credentials.first_name,credentials.last_name FROM users JOIN credentials ON users.id = credentials.user_id";
-=======
-            String query = "";
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             ResultSet res = con.prepareStatement(query).executeQuery();
             while (res.next()) {
                 System.out.print("User ID: " + res.getInt("id"));
@@ -63,11 +55,7 @@ public class User {
         boolean isExist = false;
         try {
             Connection con = conn.getConnection();
-<<<<<<< HEAD
             String query = "SELECT COUNT(*) FROM users WHERE username = ?"; // 3. Complete this query, tip use COUNT()
-=======
-            String query = " username = ?"; // 3. Complete this query, tip use COUNT()
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement stmt_is_user_exist = con.prepareStatement(query);
             stmt_is_user_exist.setString(1, username);
             ResultSet rs = stmt_is_user_exist.executeQuery();
@@ -78,11 +66,7 @@ public class User {
                 }
             }
             if (!isExist) {
-<<<<<<< HEAD
                 query = "INSERT INTO users (username,password) VALUES(?,?)"; // 4. Complete this query
-=======
-                query = " VALUES(?,?)"; // 4. Complete this query
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
                 PreparedStatement stmt = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
                 stmt.setString(1, username);
                 stmt.setString(2, password);
@@ -91,11 +75,7 @@ public class User {
                 if (res.next()) {
                     int last_row_id = res.getInt(1);
                     // 5. Fill this query, there might be a clue somewhere, you might look above
-<<<<<<< HEAD
                     String newQuery = "INSERT INTO credentials (user_id,first_name,last_name) VALUES(?,?,?)";
-=======
-                    String newQuery = " VALUES(?,?,?)";
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
                     stmt = con.prepareStatement(newQuery);
                     stmt.setInt(1, last_row_id);
                     stmt.setString(2, first_name);
@@ -114,11 +94,7 @@ public class User {
 
         try {
             Connection con = conn.getConnection();
-<<<<<<< HEAD
             String query = "UPDATE users SET username=?, password=? WHERE id=?"; // Complete this query
-=======
-            String query = "username=?,password=?  id=?"; // Complete this query
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -133,21 +109,13 @@ public class User {
     public void deleteUser(String id) {
         try {
             Connection con = conn.getConnection();
-<<<<<<< HEAD
             String credQuery = "DELETE FROM credentials WHERE user_id = ?"; // 6. Complete this query
-=======
-            String credQuery = "user_id = ?"; // 6. Complete this query
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement credStmt = con.prepareStatement(credQuery);
             credStmt.setString(1, id);
             credStmt.executeUpdate();
 
             // 7. Complete this query, there a clue above on how to write this query
-<<<<<<< HEAD
             String query = "DELETE FROM users WHERE id =?";
-=======
-            String query = "";
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, id);
             stmt.executeUpdate();
@@ -161,11 +129,7 @@ public class User {
         try {
             Connection con = conn.getConnection();
             // 8. Complete this query, by now you know how to query this without any assistance.
-<<<<<<< HEAD
             String credQuery = "UPDATE credentials SET first_name =?, last_name=? WHERE user_id=?";
-=======
-            String credQuery = "";
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement credStmt = con.prepareStatement(credQuery);
             credStmt.setString(1, first_name);
             credStmt.setString(2, last_name);
@@ -181,21 +145,13 @@ public class User {
     public boolean getUser(String id){
         try {
             Connection con = conn.getConnection();
-<<<<<<< HEAD
             String query = "SELECT * FROM users WHERE id= ?"; // 9. Complete this query, you can do it.
-=======
-            String query = ""; // 9. Complete this query, you can do it.
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, id);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
                 System.out.print("User ID: " + res.getInt("id"));
-<<<<<<< HEAD
                 System.out.println(" | Username: " + res.getString("username"));
-=======
-                System.out.print(" | Username: " + res.getString("username"));
->>>>>>> 8d9a605e1cceac28d26606a594697cc482af27bb
             }else{
                 output = false;
             }
